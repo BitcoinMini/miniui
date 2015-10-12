@@ -1,3 +1,3 @@
 # Mini
 -----------------------
-used for communication of project parts with Steve
+Source code for the Bitcoin Mini User Interface
