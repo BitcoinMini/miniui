@@ -1,0 +1,61 @@
+<% include pages/parts/header.ejs %>
+
+<div class="wrapper">
+
+    <div class="container-fluid">
+        <!-- Update for alerts -->
+        <div class="alert alert-danger col-xs-12 hidden" role="alert" id="updateNotice">
+            <button type="button" class="btn btn-danger pull-right" id="updateBanner">UPDATE NOW</button>
+            <strong>Update Available</strong><br>
+            Summary:<br>
+            If you have issues upgrading contact us at support@bitcoinmini.com.
+        </div>
+
+        <div class="col-xs-12">
+            <h1 class="area-heading">
+                <a href="#" class="btn btn-default pull-right disabled"><i class="fa fa-tv"></i> Programs</a></h1>
+                <a href="#" class="btn btn-default pull-right disabled"><i class="fa fa-object-group"></i> Quick Apps</a>
+            </h1>
+        </div>
+        <!-- Alert about coming updates -->
+        <div class="alert alert-info alert-dismissible col-xs-12" role="alert" style="margin-top:20px;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Version 1.5 coming soon!</strong><br>
+            <br>
+            Features of v1.5 include:<br>
+            Several apps to add functionality<br>
+            User Settings menu and Settings web interface<br>
+            Sliding menus for mobile screens<br>
+            <br>
+            If you are interested in developing third party programs or apps to run on the Mini, contact us via Github or contributor@bitcoinmini.com.
+        </div>
+        <!-- App Tiles -->
+        <div class="col-xs-12">
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="app disabled">
+                    <div class="tx shadow">
+                        <h2><i class="fa fa-qrcode"></i></h2>
+                        <h5><em>Paper Wallets</em></h5>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <a href="#" class="app disabled">
+                    <div class="tx shadow">
+                        <h2><i class="fa fa-search"></i></h2>
+                        <h5><em>Block Explorer</em></h5>
+                    </div>
+                </a>
+            </div>
+
+        </div><!-- / app tiles -->
+
+    </div><!-- / container-fluid -->
+
+</div><!-- / wrapper -->
+
+
+
+
+<% include pages/parts/footer.ejs %>

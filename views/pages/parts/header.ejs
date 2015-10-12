@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Decentralize all the things. -->
+    <!-- Contact us personally at ansellindner@protonmail.ch or steve@internaut.solutions -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bitcoin Mini - a personal bitcoin node, unlocking the power of bitcoin, a peer-to-peer cash system.">
+    <link rel="author" href="https://plus.google.com/u/0/+AnselLindner"/>
+
+    <title>Mini UI</title>
+    <link rel="icon" href="/img/mini.ico">
+
+    <!-- Bootstrap Core CSS CDNs-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Local CSS -->
+    <link href="/css/mini.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
+    
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+    <!-- Navigation -->
+    <div id="left-nav">
+        <ul id="sidebar">
+            <!-- Status -->
+            <li class="menu-item left">
+                <p id="system_status"><i class="fa fa-exclamation-triangle orange pull-left"></i>Loading<img src="/img/ellipsis.gif"/></p>
+            </li>
+            <!-- Connection items -->
+            <li class="menu-item left p2p">
+                <div style="width:37%;display:inline-block;text-align:center;">
+                    <h5>Up Time</h5><p id="up_time">-- ---</p>
+                </div>
+                <div style="width:17%;display:inline-block;text-align:center;">
+                    <h5>Peers</h5><p id="peers">--</p>
+                </div>
+                <div style="width:40%;display:inline-block;text-align:center;">
+                    <h5>Behind</h5><p id="behind">- Blocks</p>
+                </div>
+            </li>
+            <!-- Info items -->
+            <li class="menu-item left">
+                    <p id="ip">0.0.0.0</p><h5>External IP</h5>
+            </li>
+            <li class="menu-item left">
+                    <p id="version">-----</p><h5>Protocol Version</h5>
+            </li>
+            <li class="menu-item left">
+                    <p id="block">-----</p><h5>Block</h5>
+            </li>
+            <li class="menu-item left">
+                    <p id="difficulty">-----</p><h5>Difficulty</h5>
+            </li>
+            <!-- Update button -->
+            <li id="updateSidebar" class="menu-item left hidden" style="padding-right:25px;">
+                    <a id="updateButton" class="btn btn-danger col-xs-12">UPDATE NOW</a>
+            </li>
+            <!-- Start and Stop buttons -->
+            <!-- <li class="menu-item left menu-button">
+
+            </li> -->
+            <!-- Version and links -->
+            <!-- <li class="menu-item left info" style="padding-top:145px;">
+
+            </li> -->
+        </ul>
+        <!-- System Control Buttons -->
+        <div class="col-xs-12 start-stop">
+            <div class="btn-group" role="group" style="margin-top:7px;width:100%;">
+                <button id="restart" type="button" class="btn btn-default" style="width:50%">Restart</button>
+                <button id="shutdown" type="button" class="btn btn-default" style="width:50%">Shutdown</button>
+            </div>
+        </div>
+        <!-- Social/Contact -->
+        <div class="col-xs-12 menu-links">
+            <a href="https://github.com/BitcoinMini" alt="github link" target="_blank"><img src="/img/github.png" alt="Mini on Github" /></a>&nbsp;&nbsp;&nbsp;
+            <a href="https://reddit.com/r/bitcoinmini" alt="Mini on Reddit" target="_blank"><img src="/img/reddit.png" alt="Mini on Reddit" /></a>&nbsp;&nbsp;&nbsp;
+            <a href="https://www.twitter.com/BitcoinMini" alt="Mini on Twitter" target="_blank"><img src="/img/twitter.png" alt="Mini on Twitter" /></a>&nbsp;&nbsp;&nbsp;
+            <a href="http://bitcoinmini.com/contact" alt="support" target="_blank"><img src="/img/mail.png" alt="Mini Email" /></a>
+        </div>
+    </div><!-- /Left-sidebar -->
+
+    <div id="top-nav">
+        <ul id="top-list">
+            <li class="hamburger menu-item top pull-left hidden"><a id="bigslide"><i class="fa fa-th-list"></i></a></li>
+            <!-- Brand -->
+            <li class="menu-item top pull-left"><a href="localhost:3000" target="_blank"><img src="/img/Bitcoin_Mini_Logo_Mini.png" alt="logo" class="logo"/></a></li>
+            <!-- Reserved -->
+            <li class="menu-item top col-xs-7"></li>
+            <!-- Bitcoin Price via theindex.io -->
+            <li class="menu-item top col-xs-2 text-right"><h5>Bitcoin</h5><p id="price">...</p></li>
+            <li class="menu-item top col-xs-1 text-center" id="settings" style="font-size:24px;cursor:pointer;">
+                <a href="#menu" class="menu-link"><i class="fa fa-cog"></i></a>
+            </li>
+        </ul>
+    </div><!-- /Top-nav -->
+
+    <!-- <nav id="menu" class="panel" role="navigation">
+        <ul>
+            <li><a href="#">Bitcoin Config</a></li>
+            <li><a href="#">User</a></li>
+        </ul>
+    </nav> -->

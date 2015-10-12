@@ -1,0 +1,107 @@
+/**
+ *  Bitcoin Mini Styles
+ *
+ *  @author Ansel Lindner <ansellindner@protonmail.ch>
+ *  @link http://bitcoinmini.com
+ *  @copyright Copyright (c) 2015, BitcoinMini.com
+ *  @license Open Source MIT
+ */
+/**
+ *  CONTENTS
+ *  ====================
+ *  Standard Sytles
+ *  Home
+ *  Forms
+ *  Docs
+ *  Footer
+ *  Widgets
+ */
+
+/*                                                                    Global  */
+/*============================================================================*/
+
+html,body { height:100vh; }
+body { position:relative; background:#dbdbdb; padding-top: 50px; /* height of navbar */
+	color: #333; font-family: 'Open Sans', sans-serif; font-weight: 200 !important;
+}
+a { color:inherit; }
+pre {
+    white-space: pre-wrap; background:#3c3c3c; border:1px solid #4e4e4e; padding:20px;
+    line-height: 24px; font-size: 20px; color:#bdbdbd;
+}
+hr { background:#666; }
+ul,li {list-style: none;}
+
+/*                                                                   Navbars  */
+/*============================================================================*/
+
+#left-nav { position:absolute; top:0;left:0; padding:0; margin:0; width:250px; min-height:100vh;
+	background:#222; z-index: 101;}
+#sidebar { padding-left:0; width:100%; }
+.menu-item { height:60px; padding:10px 0 0 25px; }
+.left {width:100%;}
+.left:first-of-type p {  }
+.menu-item h5 {font-size:11px; margin-bottom:0;margin-top:0;color:#5c5c5c;text-transform: uppercase;}
+.menu-item p {font-size:20px; font-family:'Play', sans-serif; color:#dbdbdb; margin-bottom:0;}
+.p2p { background:#1d1d1d; height:80px; padding:20px 0 0 0; border-bottom:1px solid #5c5c5c; border-top:1px solid #5c5c5c; }
+.p2p h5 { font-size:10px; } .p2p p { font-size:16px; }
+.menu-button h5 { margin-top:5px; }
+#top-nav { position:absolute; top:0; left:250px; padding:0; margin:0;height:60px; width:calc(100% - 250px);
+	background:#dbdbdb;border-bottom:1px solid #999; z-index: 101;}
+#top-list { padding-left:0; }
+.top { display:inline-block; }
+.top p { font-size:20px; font-family:'Play', sans-serif; color:#333; }
+.hamburger { font-size:24px; color:#333; padding-top:15px; }
+.hamburger:hover { color:inherit; }
+.start-stop { position:absolute; top:520px; }
+.menu-links { font-size:24px; text-align:center; color:#222; position:absolute; top:580px;}
+#menu.panel {
+	padding-top:70px;
+    position: fixed;
+    right: -15.625em; /*left or right and the width of your navigation panel*/
+    width: 15.625em; /*should match the above value*/
+    z-index: 90;
+}
+#menu ul li a {
+	height:70px;line-height: 70px;font-family: 'Play', sans-serif; font-size:18px;
+}
+#menu ul li a:hover {text-decoration: none;color:inherit;} 
+#menu ul li a:hover < li { background:#888;}
+
+.wrapper { position:absolute; top:70px; left:250px; padding:0; margin:0; width:calc(100% - 250px); z-index:1;}
+
+.logo { height:30px; margin-top:5px; }
+h1.area-heading { font-size:24px; margin-bottom:20px; }
+.disabled:hover { cursor:not-allowed; }
+.app:hover,.app:visited { color:inherit; text-decoration:none; }
+.green { color:green; margin-right:20px;padding-top:5px;font-size:32px;}
+.gray { color:#2a2a2a; margin-right:20px;padding-top:7px;font-size:28px;}
+.orange { color:#db9100; margin-right:20px;padding-top:5px;font-size:32px; }
+
+/*                                                                     Tiles  */
+/*============================================================================*/
+
+.tx { background:#fafafa; margin:20px; padding:20px; text-align:center; border-radius:2px;}
+.shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.2s ease-in-out; }
+.shadow:hover {box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);}
+
+
+/*                                                                     Forms  */
+/*============================================================================*/
+
+.form-control { border:none; border-bottom:1px solid #dbdbdb; border-radius:0; background:transparent; box-shadow:none; }
+.form-control:focus { border:none; border-bottom:1px solid #898989; border-radius:0; background:transparent; box-shadow:none; }
+label { font-weight:300; color:#999; font-size:16px; padding-bottom:10px; width:100%; }
+
+
+/*                                                                    Navbar  */
+/*============================================================================*/
+
+
+/*                                                           Media (769-991)  */
+/*============================================================================*/
+@media (min-width: 769px and max-width: 991px) {
+
+}
+/***************************************************/
