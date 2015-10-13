@@ -25,6 +25,6 @@ app.get('/', function(req, res) {
 
 //Create a server
 var server = http.createServer(app)
-	.listen(3000, function(){
-		console.log('The Mini Server is listening on port 3000');
+	.listen(80, function(){
+		console.log('The Mini Server is listening on port 80');
 	});

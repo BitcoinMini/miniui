@@ -9,6 +9,8 @@ Your rpcpassword is located in bitcoin.conf. Make sure to update routes/api.js w
 
 Using the automated update included with this UI will overwrite any edits you may have made to the included files.
 
+If you wish to run this without root privleges, simply change the port number in mini_server.js
+
 ----
 Copyright (c) 2015 Bitcoin Mini
 

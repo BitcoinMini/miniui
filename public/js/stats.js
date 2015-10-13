@@ -115,13 +115,17 @@ $( document ).ready(function() {
     // Buttons for restart, shutdown, and upgrade
     // TODO add a confirmation of user action
     $('#restart').click(function(){
+    	var confirm = window.confirm('Restart Mini?');
+    	if(confirm == true){
     	$.getJSON('http://'+serveradd+'/api/restart');
-    	alert('System Rebooting');
+    	}
     });
 
     $('#shutdown').click(function(){
+    	var confirm = window.confirm('Shutdown Mini?');
+    	if(confirm == true){
     	$.getJSON('http://'+serveradd+'/api/shutdown');
-    	alert('System Shutting Down');
+    	}
     });
 
     $('#updateBanner').click(function(){
