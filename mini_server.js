@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 //================================= INCLUDE MODULES ==
 var http = require('http');
 var express = require('express');
