@@ -3,7 +3,7 @@ $( document ).ready(function() {
     // Check for updates
     $.getJSON('http://bitcoinmini.com/nodeData/alerts.php',function(data){
         // Show update notices if updates are available
-    	if(data['upgrade'][0] == 1){
+    	if(1 == 1){ //data['upgrade'][0]
             // banner
             $('#updateNotice').removeClass('hidden');
             // sidebar button
@@ -130,12 +130,18 @@ $( document ).ready(function() {
 
     $('#updateBanner').click(function(){
     	$.getJSON('http://'+serveradd+':2000/upgrade');
-    	alert('System Upgrade continuing in the background');
+    	var confirm = window.confirm('Do You Want to Update Your Mini Web Interface?');
+    	if(confirm == true){
+    	$.getJSON('http://'+serveradd+'/api/update');
+    	}
     });
 
     $('#updateButton').click(function(){
     	$.getJSON('http://'+serveradd+':2000/upgrade');
-    	alert('System Upgrade continuing in the background');
+    	var confirm = window.confirm('Do You Want to Update Your Mini Web Interface?');
+    	if(confirm == true){
+    	$.getJSON('http://'+serveradd+'/api/update');
+    	}
     });
 
     // Begin function
