@@ -3,7 +3,7 @@ $( document ).ready(function() {
     // Check for updates
     $.getJSON('http://bitcoinmini.com/nodeData/alerts.php',function(data){
         // Show update notices if updates are available
-    	if(1 == 1){ //data['upgrade'][0]
+    	if(data['upgrade'][0] == 1){ 
             // banner
             $('#updateNotice').removeClass('hidden');
             // sidebar button
