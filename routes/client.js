@@ -21,7 +21,7 @@ var client = new bitcoin.Client({
   //user: btcData['user'],
   user: 'bitcoinrpc',
   //pass: btcData['pass'],
-  pass: 'CHANGEME',  //this must match the rpcpassword in ~/.bitcoin/bitcoin.conf
+  pass: '',  //this must match the rpcpassword in ~/.bitcoin/bitcoin.conf
   timeout: 30000
 });
 //module.exports = client;
