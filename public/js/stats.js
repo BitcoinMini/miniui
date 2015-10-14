@@ -1,16 +1,16 @@
 $( document ).ready(function() {
-
+var version = '1.5.0';
     // Check for updates
     $.getJSON('http://bitcoinmini.com/nodeData/alerts.php',function(data){
         // Show update notices if updates are available
-    	if(data['upgrade'][0] == 1){ 
+    	if(data['upgrade'][0] != version){
             // banner
             $('#updateNotice').removeClass('hidden');
             // sidebar button
             $('#updateSidebar').removeClass('hidden');
     	} else {
             // Hide update notices
-            if(data['upgrade'][0] != 1) {
+            if(data['upgrade'][0] == version) {
                 // banner
                 $('#updateNotice').addClass('hidden');
                 // sidebar button
