@@ -16,12 +16,12 @@
 
 // Connect to bitcoind
 var client = new bitcoin.Client({
-  host: '192.168.1.4',
+  host: 'localhost',
   port: 8332,
   //user: btcData['user'],
   user: 'bitcoinrpc',
   //pass: btcData['pass'],
-  pass: '2U8B43mS76951G7dQUKsB5YTHnCyANEAPWsuaaJAXD6u',  //this must match the rpcpassword in ~/.bitcoin/bitcoin.conf
+  pass: 'CHANGEME',  //this must match the rpcpassword in ~/.bitcoin/bitcoin.conf
   timeout: 30000
 });
 //module.exports = client;
