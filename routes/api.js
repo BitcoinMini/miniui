@@ -25,7 +25,7 @@ var client = new bitcoin.Client({
   host: 'localhost',
   port: 8332,
   //user: btcData['user'],
-  user: 'bitcoinrpc',
+  user: '123bitcoinrpc',
   //pass: btcData['pass'],
   pass: '2U8B43mS76951G7dQUKsB5YTHnCyANEAPWsuaaJAXD6u',  //this must match the rpcpassword in ~/.bitcoin/bitcoin.conf
   timeout: 30000
@@ -59,7 +59,9 @@ exec("sudo reboot", function (error, stdout, stderr) { res.json(stdout) });
 api.get('/shutdown', function(req, res) {
 exec("sudo shutdown -t now 0", function (error, stdout, stderr) { res.json(stdout) });
 });
-
+api.get('/update', function(req, res) {
+exec("cd miniui && git pull", function (error, stdout, stderr) { res.json('Update Complete' + stdout) });
+});
 });
 
 module.exports = api;
