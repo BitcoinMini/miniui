@@ -7,11 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Bitcoin Mini - a personal bitcoin node, unlocking the power of bitcoin, a peer-to-peer cash system.">
-    <link rel="author" href="https://plus.google.com/u/0/+AnselLindner"/>
 
-    <title>Mini UI</title>
+    <title>Mini UI v1.5</title>
+
     <link rel="icon" href="/img/mini.ico">
-
     <!-- Bootstrap Core CSS CDNs-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
@@ -20,15 +19,12 @@
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
-    
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 <body>
     <!-- Navigation -->
@@ -36,7 +32,13 @@
         <ul id="sidebar">
             <!-- Status -->
             <li class="menu-item left">
-                <p id="system_status"><i class="fa fa-exclamation-triangle orange pull-left"></i>Loading<img src="/img/ellipsis.gif"/></p>
+                <p id="system_status">
+                    <i class="fa fa-exclamation-triangle orange pull-left"></i>Loading<img src="/img/ellipsis.gif"/>
+                    <!-- Menu for mobile sized screens - works with ul class="mobile-slide" below -->
+                    <!--<a href="#mobile-menu" class="mobile-link pull-right">
+                        <i id="mobile-menu-icon" class="fa fa-chevron-left"></i>
+                    </a> -->
+                </p>
             </li>
             <!-- Connection items -->
             <li class="menu-item left p2p">
@@ -50,6 +52,13 @@
                     <h5>Behind</h5><p id="behind">- Blocks</p>
                 </div>
             </li>
+            <!-- Mobile Update Alert -->
+            <div class="alert alert-info alert-dismissible mobile-alert" role="alert" style="margin-top:20px;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Version 1.6 coming soon!</strong>
+                <br>
+                Issues to <a href="mailto:support@bitcoinmini.com">support@bitcoinmini.com</a>.
+            </div>
             <!-- Info items -->
             <li class="menu-item left">
                     <p id="ip">0.0.0.0</p><h5>External IP</h5>
@@ -67,22 +76,15 @@
             <li id="updateSidebar" class="menu-item left hidden" style="padding-right:25px;">
                     <a id="updateButton" class="btn btn-danger col-xs-12">UPDATE NOW</a>
             </li>
-            <!-- Start and Stop buttons -->
-            <!-- <li class="menu-item left menu-button">
-
-            </li> -->
-            <!-- Version and links -->
-            <!-- <li class="menu-item left info" style="padding-top:145px;">
-
-            </li> -->
+            
         </ul>
         <!-- System Control Buttons -->
-        <div class="col-xs-12 start-stop">
+        <!-- <div class="col-xs-12 start-stop">
             <div class="btn-group" role="group" style="margin-top:7px;width:100%;">
-                <button id="restart" type="button" class="btn btn-default" style="width:50%">Restart</button>
-                <button id="shutdown" type="button" class="btn btn-default" style="width:50%">Shutdown</button>
+                <button  type="button" class="btn btn-default" style="width:50%">Restart</button>
+                <button  type="button" class="btn btn-default" style="width:50%">Shutdown</button>
             </div>
-        </div>
+        </div> -->
         <!-- Social/Contact -->
         <div class="col-xs-12 menu-links">
             <a href="https://github.com/BitcoinMini" alt="github link" target="_blank"><img src="/img/github.png" alt="Mini on Github" /></a>&nbsp;&nbsp;&nbsp;
@@ -101,7 +103,23 @@
             <li class="menu-item top col-xs-7"></li>
             <!-- Bitcoin Price via theindex.io -->
             <li class="menu-item top col-xs-2 text-right"><h5>Bitcoin</h5><p id="price">...</p></li>
-            <li class="menu-item top col-xs-1 text-center" id="settings" style="font-size:24px;cursor:pointer;">
+            <!-- System Control dropdown -->
+            <li class="menu-item top col-xs-1 dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-power-off fa-2x"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <div class="alert alert-danger power-alert" role="alert">
+                        <strong>Warning!</strong><br>
+                        These buttons should rarely be used. If you use the shutdown button, you must unplug the mini's power and then plug it back in. It will boot back up as normal.<br>
+                    </div>
+                   
+                    <li><a id="restart">Restart</a></li>
+                    <li class="divider"></li>
+                    <li><a id="shutdown">Shutdown</a></li>
+                </ul>
+            </li>
+            <li class="menu-item top col-xs-1 text-center hidden" id="settings" style="font-size:24px;cursor:pointer;">
                 <a href="#menu" class="menu-link"><i class="fa fa-cog"></i></a>
             </li>
         </ul>
@@ -113,3 +131,22 @@
             <li><a href="#">User</a></li>
         </ul>
     </nav> -->
+    <!-- Mobile menu nav -->
+    <nav id="mobile-menu" class="panel" role="navigation">
+        <ul>
+            <!-- Menu header -->
+            <li><a href="#mobile-menu" class="mobile-link"><i class="fa fa-close fa-2x"></i></a><img src="/img/Bitcoin_Mini_Logo_Mini.png" alt="logo" class="mobile-logo pull-right"/></li>
+            <li class="divider"></li>
+            <!-- Menu header -->
+            <li class="mobile-menu-label">Quick Apps</li>
+            <li><a href="#">Contacts</a></li>
+            <li><a href="#">AddGen</a></li>
+            <li><a href="#">Block Explorer</a></li>
+            <li class="divider"></li>
+            <!-- Menu header -->
+            <li class="mobile-menu-label">Programs (hypothetical)</li>
+            <li><a href="#">Some cool wallet</a></li>
+            <li><a href="#">Dark market #1</a></li>
+            <li><a href="#">Accounting</a></li>
+        </ul>
+    </nav>
