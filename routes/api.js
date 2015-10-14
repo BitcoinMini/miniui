@@ -4,7 +4,17 @@ var bitcoin = require('bitcoin');
 var sys = require('util')
 var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
-eval(require('fs').readFileSync('./routes/client.js', 'utf8'));
+eval(require('fs').readFileSync('../client.js', 'utf8'));
+//You will need to create the file client.js in the directory above the ui
+// it needs to have the following code
+
+//var client = new bitcoin.Client({
+//  host: 'localhost',
+//  port: 8332,
+//  user: 'bitcoinrpc',
+//  pass: 'CHANGEME',  //this must match the rpcpassword in ~/.bitcoin/bitcoin.conf
+//  timeout: 30000
+//});
 
 
 // middleware specific to this router
