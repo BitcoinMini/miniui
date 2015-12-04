@@ -1,98 +1,77 @@
 $( document ).ready(function() {
+var latestBlock;
+var currentBlock;
+var bDiff;
+
 var version = '1.5.0';
     // Check for updates
-    $.getJSON('http://bitcoinmini.com/nodeData/alerts.php',function(data){
+    $.getJSON('https://bitcoinmini.com/nodeData/alerts.php',function(data){
         // Show update notices if updates are available
-    	if(data['upgrade'][0] != version){
+    	//if(data['upgrade'][0] != version){
             // banner
-            $('#updateNotice').removeClass('hidden');
+           // $('#updateNotice').removeClass('hidden');
             // sidebar button
-            $('#updateSidebar').removeClass('hidden');
-    	} else {
+           // $('#updateSidebar').removeClass('hidden');
+    	//} else {
             // Hide update notices
-            if(data['upgrade'][0] == version) {
+           // if(data['upgrade'][0] == version) {
                 // banner
-                $('#updateNotice').addClass('hidden');
+               // $('#updateNotice').addClass('hidden');
                 // sidebar button
-                $('#updateSidebar').addClass('hidden');
-            }
-        }
+               // $('#updateSidebar').addClass('hidden');
+            //}
+        //}
     });
 
-    // Declare variables
-    var serveradd = 'localhost';
-    var latestBlock;
-    var tx24;
-    var diff;
-    var currentBlock;
-    var peerData;
-    var price;
-    var genInfo;
-    var blockDif;
 // Get External IP
         $.getJSON('https://api.ipify.org/?format=json',function(ip){
         $('#ip').html(ip.ip);
         });
-    console.log( "Bitcoin on your Mini is ready!" );
+	console.log( "Miniui is running" );
 
-    // Main function to display data about your Mini and bitcoin network
-    function updateData(){
-
+// Main function to display data about your Mini and bitcoin network
+function updateData(){
+// Declare variables
+	var serveradd = 'localhost';
+	var diff;
+	var peerData;
+	var price;
+	var genInfo;
         // Variable to your Mini's server
     	serveradd = window.location.host;
 
+// Get latest block
+	$.getJSON('https://blockchain.info/q/getblockcount',function(data){
+		latestBlock = data;
+	});
 
 
-        // Get data from your Mini bitcoind
-        $.getJSON('http://bitcoinmini.com/nodeData/serveradd.php',function(data){
-        	var miniserver = data;
-            //console.log(miniserver);
+// Get the amount of time your Mini has been running
+	$.getJSON('http://'+serveradd+'/api/uptime',function(data){
+		var ut = data.split(" ");
+		var mins = (ut[0]/60).toFixed(0);
+		var hrs = (mins/60).toFixed(0);
+		var dys = (hrs/24).toFixed(0);
+		var disp = "";
+		if (mins > 60){
+			if (hrs > 24){
+				disp = dys+" Days";
+			} else {
+				disp = hrs+" Hrs";
+			}
+		} else {
+			disp = mins+" Mins";
+		}
+		$('#up_time').html(disp);
+	});
 
-            // Get latest block
-        	$.getJSON('http://'+miniserver+':3000/api/btc/getblockcount',function(data){
-                //console.log(data);
-        		latestBlock = data;
-        	});
-        });
-
-        // Get the amount of time your Mini has been running
-        $.getJSON('http://'+serveradd+'/api/uptime',function(data){
-            //console.log(data);
-    		var ut = data.split(" ");
-    		var mins = (ut[0]/60).toFixed(0);
-    		var hrs = (mins/60).toFixed(0);
-    		var dys = (hrs/24).toFixed(0);
-    		var disp = "";
-    		if (mins > 60){
-        		if (hrs > 24){
-        		    disp = dys+" Days";
-        		} else {
-        		    disp = hrs+" Hrs";
-        		}
-    		} else {
-    			disp = mins+" Mins";
-    		}
-
-    		$('#up_time').html(disp);
-    	});
-
-        // Get number of transaction in last 24 hours - REMOVED
-    	//$.getJSON('https://blockchain.info/q/24hrtransactioncount',function(data){
-    	//    tx24 = data;
-    	//	  $('#tx24').html(tx24.toLocaleString());
-    	//});
-
-
-        // Get bitcoin price from theindex.io
+// Get bitcoin price from theindex.io
     	$.getJSON('http://theindex.io/api/btc/index.php',function(data){
-            //console.log(data);
-    		price = data;
-    		$('#price').html("$"+price);
+    		$('#price').html("$"+data);
     	});
 
-        // Get more bitcoin stats
+// Get more bitcoin stats
     	$.getJSON('http://'+serveradd+'/api/getInfo',function(data){
-    		//console.log(data);
     		genInfo = data;
     		$('#version').html(genInfo['protocolversion']);
     		$('#difficulty').html(parseInt(genInfo['difficulty']).toLocaleString());
@@ -102,15 +81,20 @@ var version = '1.5.0';
     		$('#system_status').html('<i class="fa fa-check-circle green"></i>Online')
     	});
 
-        // Get difference how many blocks your Mini is behind the network
-    	if (currentBlock == latestBlock){
-    		$('#behind').html('0 Blocks');
-    	} else {
-    	    blockDif = latestBlock - currentBlock;
-    		$('#behind').html(blockDif+' Blocks');
-    	}
-
-    }
+// Get difference how many blocks your Mini is behind the network
+	var numCheck = isNaN(currentBlock);
+	console.log(numCheck);
+	if(numCheck != true){
+		if(currentBlock != latestBlock){
+		bDiff = latestBlock - currentBlock;
+		$('#behind').css('color','red');
+		$('#behind').html('Blocks Behind<br />'+bDiff);
+		}else{
+		$('#behind').css('color','lime');
+		$('#behind').html('Blockchain<br />Up To Date');
+		}
+	}
+}
 
     // Buttons for restart, shutdown, and upgrade
     // TODO add a confirmation of user action
@@ -145,8 +129,10 @@ var version = '1.5.0';
     });
 
     // Begin function
-	updateData();
+	setTimeout(function(){updateData();}, 15000);
+
+
     // Timer to repeat function every 60 secs
-	var updateTimer = setInterval(updateData(),60000);
+	var updateTimer = setInterval(function(){updateData();},60000);
 
 });

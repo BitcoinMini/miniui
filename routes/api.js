@@ -4,17 +4,39 @@ var bitcoin = require('bitcoin');
 var sys = require('util')
 var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
-eval(require('fs').readFileSync('../client.js', 'utf8'));
-//You will need to create the file client.js in the directory above the ui
-// it needs to have the following code
+var fs = require('fs-extra');
+var client;
+module.exports = fs.readFile('/home/miniuser/.bitcoin/bitcoin.conf','utf8', function (err, data) {
+	if (err) throw err;
+	// break down by lines
+	var lines = data.split(/\r?\n/),x,opts = [];
+	// create variable we will check later
+	bitcoinconfData = '';
+	// look at all lines in .conf
+	for (x in lines){
+		// associate each line as key value pairs
+		var cur = lines[x].split("=");
+	// if the key = rpcpassword
+		if(cur[0] == 'rpcuser'){
+		// set our value as the current value in the bitcoin.conf file
+		var user = cur[1];
+		}
+		// if the key = rpcpassword
+		if(cur[0] == 'rpcpassword'){
+		// set our value as the current value in the bitcoin.conf file
+		var pass = cur[1];
+		}
+	}
 
-//var client = new bitcoin.Client({
-//  host: 'localhost',
-//  port: 8332,
-//  user: 'bitcoinrpc',
-//  pass: 'CHANGEME',  //this must match the rpcpassword in ~/.bitcoin/bitcoin.conf
-//  timeout: 30000
-//});
+	client = new bitcoin.Client({
+	  	host: 'localhost',
+	  	port: 8332,
+	  	user: user,
+	  	pass: pass,
+	  	timeout: 30000
+	});
+});
+
 
 
 // middleware specific to this router
@@ -26,7 +48,7 @@ api.use(function timeLog(req, res, next) {
 
 // define the api router
 api.get('/', function(req, res) {
-  res.send('API calls will be here');
+  res.send('TODO: API Documentation');
 });
 
 // This load basic info for the sidebar on load
@@ -42,14 +64,14 @@ api.get('/getInfo', function(req, res) {
   });
   // Restart and Shutdown capability
   api.get('/restart', function(req, res) {
-    exec("sudo reboot", function (error, stdout, stderr) { res.json(stdout) });
+    exec("sudo systemctl stop bitcoind && sudo reboot", function (error, stdout, stderr) { res.json(stdout) });
   });
   api.get('/shutdown', function(req, res) {
-    exec("sudo shutdown -t now 0", function (error, stdout, stderr) { res.json(stdout) });
+    exec("sudo systemctl stop bitcoind && sudo shutdown -t now 0", function (error, stdout, stderr) { res.json(stdout) });
   });
   // For updates, pull changes and install them
   api.get('/update', function(req, res) {
-    exec("cd miniui && git pull", function (error, stdout, stderr) { res.json('Update Complete' + stdout) });
+    exec("sudo pacman -Syu --noconfirm && cd ~/miniui && git pull", function (error, stdout, stderr) { res.json('Update Complete' + stdout) });
   });
 });
 
