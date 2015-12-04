@@ -6,7 +6,7 @@ var exec = require('child_process').exec;
 var spawn = require('child_process').spawn;
 var fs = require('fs-extra');
 var client;
-module.exports = fs.readFile('/home/hseldon/.bitcoin/bitcoin.conf','utf8', function (err, data) {
+module.exports = fs.readFile('/home/miniuser/.bitcoin/bitcoin.conf','utf8', function (err, data) {
 	if (err) throw err;
 	// break down by lines
 	var lines = data.split(/\r?\n/),x,opts = [];
@@ -29,7 +29,6 @@ module.exports = fs.readFile('/home/hseldon/.bitcoin/bitcoin.conf','utf8', funct
 	}
 
 	client = new bitcoin.Client({
-	  	//host: '192.168.0.14',
 	  	host: 'localhost',
 	  	port: 8332,
 	  	user: user,

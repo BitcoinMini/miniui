@@ -23,19 +23,16 @@ var version = '1.5.0';
         //}
     });
 
-
-
 // Get External IP
         $.getJSON('https://api.ipify.org/?format=json',function(ip){
         $('#ip').html(ip.ip);
         });
 	console.log( "Miniui is running" );
 
-    // Main function to display data about your Mini and bitcoin network
+// Main function to display data about your Mini and bitcoin network
 function updateData(){
 // Declare variables
 	var serveradd = 'localhost';
-	//var serveradd = '192.168.0.14';
 	var diff;
 	var peerData;
 	var price;
