@@ -29,6 +29,7 @@ module.exports = fs.readFile('/home/hseldon/.bitcoin/bitcoin.conf','utf8', funct
 	}
 
 	client = new bitcoin.Client({
+	  	//host: '192.168.0.14',
 	  	host: 'localhost',
 	  	port: 8332,
 	  	user: user,

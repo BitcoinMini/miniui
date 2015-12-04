@@ -6,7 +6,6 @@ var bDiff;
 var version = '1.5.0';
     // Check for updates
     $.getJSON('https://bitcoinmini.com/nodeData/alerts.php',function(data){
-    	console.log('alerts data: '+data);
         // Show update notices if updates are available
     	//if(data['upgrade'][0] != version){
             // banner
@@ -36,6 +35,7 @@ var version = '1.5.0';
 function updateData(){
 // Declare variables
 	var serveradd = 'localhost';
+	//var serveradd = '192.168.0.14';
 	var diff;
 	var peerData;
 	var price;
@@ -85,15 +85,19 @@ function updateData(){
     	});
 
 // Get difference how many blocks your Mini is behind the network
-    	if (currentBlock == latestBlock){
-    		$('#behind').html('0 Blocks');
-    	} else {
-    	    blockDif = latestBlock - currentBlock;
-    		$('#behind').html(blockDif+' Blocks');
-    	}
-
-
-    }
+	var numCheck = isNaN(currentBlock);
+	console.log(numCheck);
+	if(numCheck != true){
+		if(currentBlock != latestBlock){
+		bDiff = latestBlock - currentBlock;
+		$('#behind').css('color','red');
+		$('#behind').html('Blocks Behind<br />'+bDiff);
+		}else{
+		$('#behind').css('color','lime');
+		$('#behind').html('Blockchain<br />Up To Date');
+		}
+	}
+}
 
     // Buttons for restart, shutdown, and upgrade
     // TODO add a confirmation of user action
@@ -128,7 +132,7 @@ function updateData(){
     });
 
     // Begin function
-	updateData();
+	setTimeout(function(){updateData();}, 15000);
 
 
     // Timer to repeat function every 60 secs
